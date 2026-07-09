@@ -1,0 +1,79 @@
+name: Release Chrome extension
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    name: Package extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read manifest version
+        id: manifest
+        run: |
+          VERSION="$(node -p "require('./manifest.json').version")"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Check tag matches manifest version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          MANIFEST_VERSION="${{ steps.manifest.outputs.version }}"
+          if [ "$TAG_VERSION" != "$MANIFEST_VERSION" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match manifest version $MANIFEST_VERSION."
+            echo "Use tag v$MANIFEST_VERSION or update manifest.json before releasing."
+            exit 1
+          fi
+
+      - name: Validate extension files
+        run: |
+          node --check src/content.js
+          node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8')); JSON.parse(require('fs').readFileSync('_locales/en/messages.json','utf8')); JSON.parse(require('fs').readFileSync('_locales/es/messages.json','utf8'));"
+
+      - name: Build Chrome Web Store zip
+        run: |
+          PACKAGE_NAME="google-maps-old-ruler-${{ steps.manifest.outputs.version }}.zip"
+          rm -rf dist/release-root
+          mkdir -p dist/release-root/src
+          mkdir -p dist/release-root/assets/icons
+          mkdir -p dist/release-root/_locales/en
+          mkdir -p dist/release-root/_locales/es
+
+          cp manifest.json dist/release-root/manifest.json
+          cp README.md dist/release-root/README.md
+          cp src/content.js dist/release-root/src/content.js
+          cp src/content.css dist/release-root/src/content.css
+          cp _locales/en/messages.json dist/release-root/_locales/en/messages.json
+          cp _locales/es/messages.json dist/release-root/_locales/es/messages.json
+          cp assets/icons/icon-16.png dist/release-root/assets/icons/icon-16.png
+          cp assets/icons/icon-32.png dist/release-root/assets/icons/icon-32.png
+          cp assets/icons/icon-48.png dist/release-root/assets/icons/icon-48.png
+          cp assets/icons/icon-128.png dist/release-root/assets/icons/icon-128.png
+
+          cd dist/release-root
+          zip -r "../$PACKAGE_NAME" .
+          cd ../..
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> "$GITHUB_ENV"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chrome-web-store-package
+          path: dist/${{ env.PACKAGE_NAME }}
+
+      - name: Attach package to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/${{ env.PACKAGE_NAME }}
+          generate_release_notes: true

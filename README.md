@@ -12,6 +12,20 @@ Credit: Hsilamot <git@hsilamot.com>
 4. Select this project folder.
 5. Open `https://www.google.com/maps/`.
 
+## Release package
+
+GitHub Actions builds the Chrome Web Store ZIP automatically when a tag like `v0.1.1` is pushed.
+The tag version must match `manifest.json`.
+
+```bash
+git tag v0.1.1
+git push origin v0.1.1
+```
+
+The workflow validates the manifest/locales/content script, builds `google-maps-old-ruler-<version>.zip`, uploads it as an artifact, and attaches it to the GitHub Release.
+
+For a manual package without tagging, open the `Release Chrome extension` workflow in GitHub Actions and run it with `workflow_dispatch`.
+
 ## Current behavior
 
 - Adds a "Regla vieja" button near the Google Maps toolbar.
