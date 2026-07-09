@@ -1,0 +1,61 @@
+{
+  "extensionName": {
+    "message": "Google Maps Old Ruler"
+  },
+  "extensionDescription": {
+    "message": "Agrega una regla acumulativa de estilo anterior sobre Google Maps."
+  },
+  "oldRuler": {
+    "message": "Regla vieja"
+  },
+  "clickHint": {
+    "message": "Clic para puntos, arrastra/zoom normal."
+  },
+  "activate": {
+    "message": "Activar"
+  },
+  "pause": {
+    "message": "Pausar"
+  },
+  "undo": {
+    "message": "Deshacer"
+  },
+  "clear": {
+    "message": "Limpiar"
+  },
+  "statusStart": {
+    "message": "Activa la regla para empezar."
+  },
+  "statusGeo": {
+    "message": "Distancia con coordenadas del mapa."
+  },
+  "statusApprox": {
+    "message": "Distancia aproximada."
+  },
+  "statusEnabledSuffix": {
+    "message": "El mapa conserva arrastre y zoom."
+  },
+  "statusPaused": {
+    "message": "Pausada. Tus puntos se quedan visibles."
+  },
+  "segment": {
+    "message": "Segmento $NUMBER$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      }
+    }
+  },
+  "metric": {
+    "message": "Métrico"
+  },
+  "imperial": {
+    "message": "Imperial"
+  },
+  "unitsTitle": {
+    "message": "Unidades de distancia"
+  },
+  "credit": {
+    "message": "Por Hsilamot"
+  }
+}

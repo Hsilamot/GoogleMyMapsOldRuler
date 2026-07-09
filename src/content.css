@@ -1,0 +1,222 @@
+.gmor-root {
+  --gmor-bg: #f7f4ea;
+  --gmor-panel: #fffdf7;
+  --gmor-text: #222725;
+  --gmor-muted: #5d635f;
+  --gmor-border: rgba(20, 24, 22, 0.18);
+  --gmor-accent: #176b87;
+  --gmor-accent-strong: #0f4f66;
+  --gmor-danger: #9a3412;
+  color: var(--gmor-text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  position: fixed;
+  right: 14px;
+  top: 84px;
+  z-index: 2147483646;
+}
+
+.gmor-root[data-open="false"] {
+  display: none;
+}
+
+.gmor-tool {
+  align-items: center;
+  appearance: none;
+  background: #fff;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  gap: 7px;
+  height: 29px;
+  left: 194px;
+  line-height: 1;
+  padding: 0 10px;
+  position: fixed;
+  top: 70px;
+  z-index: 2147483646;
+}
+
+.gmor-tool:hover {
+  background: #f8f9fa;
+}
+
+.gmor-tool[data-active="true"] {
+  background: #e8f0fe;
+  color: #174ea6;
+}
+
+.gmor-tool-icon {
+  background:
+    linear-gradient(#5f6368, #5f6368) 0 50% / 18px 2px no-repeat,
+    repeating-linear-gradient(90deg, #5f6368 0 1px, transparent 1px 4px) 2px 6px / 14px 7px no-repeat;
+  display: block;
+  height: 16px;
+  width: 18px;
+}
+
+.gmor-tool[data-active="true"] .gmor-tool-icon {
+  background:
+    linear-gradient(#174ea6, #174ea6) 0 50% / 18px 2px no-repeat,
+    repeating-linear-gradient(90deg, #174ea6 0 1px, transparent 1px 4px) 2px 6px / 14px 7px no-repeat;
+}
+
+.gmor-panel {
+  align-items: stretch;
+  background: var(--gmor-panel);
+  border: 1px solid var(--gmor-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(20, 24, 22, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: min(320px, calc(100vw - 28px));
+  padding: 10px;
+}
+
+.gmor-row {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.gmor-title {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.gmor-total {
+  color: var(--gmor-accent-strong);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.gmor-meta {
+  color: var(--gmor-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.gmor-actions {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gmor-unit-toggle {
+  background: rgba(23, 107, 135, 0.08);
+  border: 1px solid rgba(23, 107, 135, 0.18);
+  border-radius: 6px;
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 2px;
+}
+
+.gmor-unit-button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  color: var(--gmor-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  min-height: 28px;
+  padding: 5px 8px;
+}
+
+.gmor-unit-button[data-active="true"] {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(20, 24, 22, 0.16);
+  color: var(--gmor-accent-strong);
+  font-weight: 700;
+}
+
+.gmor-button {
+  appearance: none;
+  background: var(--gmor-bg);
+  border: 1px solid var(--gmor-border);
+  border-radius: 6px;
+  color: var(--gmor-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  min-height: 32px;
+  padding: 6px 8px;
+}
+
+.gmor-button:hover {
+  border-color: rgba(23, 107, 135, 0.5);
+}
+
+.gmor-button[data-active="true"] {
+  background: var(--gmor-accent);
+  border-color: var(--gmor-accent);
+  color: #fff;
+}
+
+.gmor-button[data-danger="true"] {
+  color: var(--gmor-danger);
+}
+
+.gmor-segments {
+  border-top: 1px solid var(--gmor-border);
+  display: grid;
+  gap: 4px;
+  max-height: 132px;
+  overflow: auto;
+  padding-top: 8px;
+}
+
+.gmor-segment {
+  color: var(--gmor-muted);
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  line-height: 1.3;
+}
+
+.gmor-credit {
+  border-top: 1px solid var(--gmor-border);
+  color: var(--gmor-muted);
+  font-size: 11px;
+  line-height: 1.2;
+  padding-top: 7px;
+  text-align: right;
+}
+
+.gmor-canvas {
+  height: 100vh;
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  width: 100vw;
+  z-index: 2147483645;
+}
+
+@media (max-width: 640px) {
+  .gmor-tool {
+    left: 8px;
+    top: 68px;
+  }
+
+  .gmor-root {
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+    top: auto;
+  }
+
+  .gmor-panel {
+    max-width: none;
+  }
+}

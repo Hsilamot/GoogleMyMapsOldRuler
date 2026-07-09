@@ -1,0 +1,61 @@
+{
+  "extensionName": {
+    "message": "Google Maps Old Ruler"
+  },
+  "extensionDescription": {
+    "message": "Adds an old-style cumulative distance ruler overlay to Google Maps."
+  },
+  "oldRuler": {
+    "message": "Old ruler"
+  },
+  "clickHint": {
+    "message": "Click for points, drag/zoom normally."
+  },
+  "activate": {
+    "message": "Activate"
+  },
+  "pause": {
+    "message": "Pause"
+  },
+  "undo": {
+    "message": "Undo"
+  },
+  "clear": {
+    "message": "Clear"
+  },
+  "statusStart": {
+    "message": "Activate the ruler to start."
+  },
+  "statusGeo": {
+    "message": "Distance from map coordinates."
+  },
+  "statusApprox": {
+    "message": "Approximate distance."
+  },
+  "statusEnabledSuffix": {
+    "message": "The map keeps drag and zoom."
+  },
+  "statusPaused": {
+    "message": "Paused. Your points remain visible."
+  },
+  "segment": {
+    "message": "Segment $NUMBER$",
+    "placeholders": {
+      "number": {
+        "content": "$1"
+      }
+    }
+  },
+  "metric": {
+    "message": "Metric"
+  },
+  "imperial": {
+    "message": "Imperial"
+  },
+  "unitsTitle": {
+    "message": "Distance units"
+  },
+  "credit": {
+    "message": "By Hsilamot"
+  }
+}
