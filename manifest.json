@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "__MSG_extensionName__",
-  "description": "__MSG_extensionDescription__",
+  "name": "Google Mas Old Ruler",
+  "description": "Implements a ruler on google maps similar to old ruler",
   "version": "0.1.1",
   "default_locale": "en",
   "author": "Hsilamot <git@hsilamot.com>",
@@ -14,7 +14,7 @@
     "128": "assets/icons/icon-128.png"
   },
   "action": {
-    "default_title": "__MSG_extensionName__",
+    "default_title": "Google Mas Old Ruler",
     "default_icon": {
       "16": "assets/icons/icon-16.png",
       "32": "assets/icons/icon-32.png",
